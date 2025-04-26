@@ -1,0 +1,35 @@
+class Animal:
+    def identificar(self, vertebras, classe, alimentacao):
+        raise NotImplementedError("este metodo deve ser implementado")
+class vertebrado(Animal):
+    mapa = {
+        ("ave", "carnivoro"): "aguia",
+        ("ave", "onivoro"): "pomba",
+        ("mamifero", "onivoro"): "homem",
+        ("ave", "herbivoro"): "vaca"
+    }
+
+    def identificar(self, vertebras, classe, alimentacao):
+        return self.mapa.get((classe, alimentacao))
+    
+class invertebrado(Animal):
+    mapa = {
+        ("inseto", "hematofago"): "pulga",
+        ("inseto", "herbivoro"): "lagarta",
+        ("anelideo", "hematofago"): "sanguesuga",
+        ("anelideo", "onivoro"): "minhoca"
+    }
+
+    def identificar(self, vertebras, classe, alimentacao):
+        return self.mapa.get((classe, alimentacao))
+    
+vertebra = input()
+classe = input()
+alimentacao = input()
+
+if vertebra == "vertebrado":
+    animal = vertebrado()
+elif vertebra == "invertebrado":
+    animal = invertebrado()
+
+print(animal.identificar(vertebra, classe, alimentacao))
